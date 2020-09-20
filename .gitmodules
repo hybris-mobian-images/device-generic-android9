@@ -1,0 +1,4 @@
+[submodule "rootfs-templates"]
+	path = rootfs-templates
+	url = git@github.com:hybris-mobian-releng/rootfs-templates.git
+	branch = master
