@@ -32,6 +32,7 @@ _debian_package_build_template: &debian_package_build_template
        -e TRAVIS_BRANCH \
        -e TRAVIS_EVENT_TYPE \
        -v /tmp/buildd-results:/buildd \
+       -v /sys/fs/cgroup:/sys/fs/cgroup \
        -v ${PWD}:/buildd/sources \
        ${DOCKER_IMAGE} \
        /bin/sh -c "cd /buildd/sources ; apt install -y python3-git ; ./build_rootfs.sh"
