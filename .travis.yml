@@ -22,6 +22,7 @@ _debian_package_build_template: &debian_package_build_template
    - mkdir -p /tmp/buildd-results
    - |
      docker run \
+       --privileged \
        -e CI \
        -e TRAVIS \
        -e HAS_JOSH_K_SEAL_OF_APPROVAL \
