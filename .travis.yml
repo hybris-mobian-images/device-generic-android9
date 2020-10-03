@@ -21,7 +21,8 @@ _debian_package_build_template: &debian_package_build_template
    # Store build results in /tmp/buildd-results
    - mkdir -p /tmp/buildd-results
    - |
-     docker run \
+     CONTAINER_HASH=$(docker run \
+       --detach \
        --privileged \
        -e CI \
        -e TRAVIS \
@@ -35,7 +36,9 @@ _debian_package_build_template: &debian_package_build_template
        -v /sys/fs/cgroup:/sys/fs/cgroup \
        -v ${PWD}:/buildd/sources \
        ${DOCKER_IMAGE} \
-       /bin/sh -c "cd /buildd/sources ; apt install -y python3-git ; ./build_rootfs.sh"
+       /sbin/init) && docker exec $CONTAINER_HASH /bin/sh -c 'cd /buildd/sources; ./build_rootfs.sh'
+
+
   deploy:
     provider: releases
     edge: true # use dpl v2
