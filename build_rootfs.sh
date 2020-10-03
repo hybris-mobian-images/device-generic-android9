@@ -84,7 +84,7 @@ fi
 
 # dpkg-dev workaround
 apt install -y dpkg-dev
-
+dpkg-architecture
 ARCH=$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
 
 debos -t architecture:$ARCH device.yml
