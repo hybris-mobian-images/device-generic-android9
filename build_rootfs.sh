@@ -82,4 +82,6 @@ if [ "${HAS_JOSH_K_SEAL_OF_APPROVAL}" == "true" ]; then
 	fi
 fi
 
-debos device.yml
+ARCH=$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
+
+debos -t architecture:$ARCH device.yml
