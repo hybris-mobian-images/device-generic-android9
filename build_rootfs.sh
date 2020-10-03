@@ -82,9 +82,7 @@ if [ "${HAS_JOSH_K_SEAL_OF_APPROVAL}" == "true" ]; then
 	fi
 fi
 
-# dpkg-dev workaround
-apt install -y dpkg-dev
-
+# get current arch
 ARCH=$(dpkg-architecture --query DEB_HOST_ARCH_CPU)
 
 debos -t architecture:$ARCH device.yml
