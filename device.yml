@@ -7,7 +7,7 @@ actions:
 
   - action: recipe
     description: create rootfs
-    recipe: rootfs-templates/hybris-mobian.yaml
+    recipe: rootfs-templates/generic_minimal.yaml
     variables:
       architecture: {{ $architecture }}
       image: {{ $image }}
